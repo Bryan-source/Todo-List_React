@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import List from './List';
 import {v4 as uuidv4} from 'uuid';
 
 class Todo extends Component {
+    
     constructor() {
         super();
 
@@ -42,7 +44,7 @@ class Todo extends Component {
     handleOnSubmit = e => {
         e.preventDefault();
 
-        if (this.state.task.trim() != '') {
+        if (this.state.task.trim() !== '') {
             this.setState({
                 task: '',
                 items: [
@@ -57,6 +59,36 @@ class Todo extends Component {
         }
     }
    
+    markAsCompleted = id => {
+        const {items} = this.state;
+
+        const foundTask = items.find(
+            item => item.id === id
+        );
+
+        foundTask.complete = true;
+
+        this.setState({
+            items: [
+                ...this.state.items,
+            ]
+        })
+    }
+
+    removeTask = id => {
+        const {items} = this.state;
+        const filteredItems = items.filter(
+            item => item.id !== id
+        )
+
+        console.log(filteredItems );
+        this.setState({
+            items: filteredItems,
+                    
+        })
+
+
+    }
     render() {
 
         console.log(this.state.items);
@@ -73,19 +105,12 @@ class Todo extends Component {
                     />
                 </form>
 
-                <ul>
-                    {
-                        this.state.items.map( (item) => (
-                            <li>
-                                {item.task}
-                                <div>
-                                    <span>icono check</span>
-                                    <span>icono basurero</span>
-                                </div>
-                            </li>
-                        ))
-                    }
-                </ul>
+                <List 
+                    items = {this.state.items}
+                    markAsCompleted = {this.markAsCompleted}
+                    removeTask = {this.removeTask}
+                />
+                
             </div>
 
 
