@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import List from './List';
 import {v4 as uuidv4} from 'uuid';
+import './Todo.css';
 
 class Todo extends Component {
     
@@ -48,12 +49,13 @@ class Todo extends Component {
             this.setState({
                 task: '',
                 items: [
-                    ...this.state.items,
                     {
                         id: uuidv4(),
                         task: this.state.task,
                         complete: false
-                    }
+                    },
+                    ...this.state.items,
+                    
                 ]
             })
         }
