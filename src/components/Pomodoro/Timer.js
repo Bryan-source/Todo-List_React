@@ -62,6 +62,34 @@ class Timer extends Component {
         })
     }
     
+
+    setTime = (newTime) => {
+        this.restartInterval();
+        this.setState({
+            time: newTime,
+        })
+    }
+
+    restartInterval = () => {
+        clearInterval(this.interval);
+
+        this.interval = setInterval(this.countDown, 1000);
+    }
+
+    countDown = () => {
+        if(this.state.time === 0){
+            this.setState({
+                alert: {
+                    type: 'Beep',
+                    message: 'Beeeeeeeeeeeeep'
+                }
+            })
+        } else {
+            
+        }
+    }
+
+
     render() {
 
         const {alert: { message, type}, time } = this.state;
