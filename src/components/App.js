@@ -4,14 +4,16 @@ import './App.css';
 import Footer from '../shared/layout/Footer';
 import Content from '../shared/layout/Content';
 //import Todo from './Todo/Todo';
-import Timer from './Pomodoro/Timer';
+//import Timer from './Pomodoro/Timer';
+//import Crypto from './Crypto/Crypto';
+import Charthome from './Chart/Charthome';
 
 function App() {
   return (
     <div className="App">
       <Header title="Header" url="https://github.com/"/>
       <Content >
-        <Timer/>
+        <Charthome/>
       </Content>
       <Footer />
     </div>

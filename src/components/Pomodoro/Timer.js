@@ -42,6 +42,8 @@ class Timer extends Component {
                 message: 'WORKING!'
             }
         })
+
+        this.setTime(this.times.defaultTime);
     }
 
     setTimeForShortBreak = () => {
@@ -51,6 +53,8 @@ class Timer extends Component {
                 message: 'Taking a Short Break!'
             }
         })
+
+        this.setTime(this.times.shortBreak);
     }
 
     setTimeForLongBreak = () => {
@@ -59,7 +63,9 @@ class Timer extends Component {
                 type: 'longBreak',
                 message: 'Taking a Long Break!'
             }
-        })
+        });
+
+        this.setTime(this.times.longBreak);
     }
     
 
@@ -83,12 +89,20 @@ class Timer extends Component {
                     type: 'Beep',
                     message: 'Beeeeeeeeeeeeep'
                 }
-            })
+            });
         } else {
-            
+            this.setState({
+                time: this.state.time - 1
+            });
         }
     }
 
+    displayTimer(seconds) {
+        const m = Math.floor(seconds/60);
+        const s = seconds%60;
+        
+        return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+    }
 
     render() {
 
@@ -101,7 +115,7 @@ class Timer extends Component {
                 </div>
 
                 <div className = "timer">
-                    Mostrar tiempo en minutos
+                    {this.displayTimer(time)}
                 </div>
 
                 <div className = "types">
