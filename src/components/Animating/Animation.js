@@ -10,6 +10,7 @@ class Animation extends Component {
         }
     }
 
+    /*  */
     componentDidUpdate(newProps, newState) {
         if(!newState.show) {
             document.getElementById('fade').style = 'opacity: 0';

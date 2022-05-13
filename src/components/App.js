@@ -8,13 +8,14 @@ import Content from '../shared/layout/Content';
 //import Crypto from './Crypto/Crypto';
 //import Charthome from './Chart/Charthome';
 import Animation from './Animating/Animation';
+import Numbers from './PureComponent/Numbers';
 
 function App() {
   return (
     <div className="App">
       <Header title="Header" url="https://github.com/"/>
       <Content >
-        <Animation/>
+        <Numbers/>
       </Content>
       <Footer />
     </div>
